@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: mcp-server
+    runtime: python3
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    plan: free  # or starter/standard based on your needs
+    envVars:
+      - key: AUTH_TOKEN
+        sync: false
+      - key: MY_NUMBER
+        sync: false
+      - key: REMOVE_BG_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+    healthCheckPath: /
+    numInstances: 1
